@@ -20,7 +20,7 @@ http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 		
 		
 	<mail:imap-idle-channel-adapter id="customAdapter"
-		store-uri="imaps://vinaymishrabca:11111111#@imap.gmail.com:993/inbox"
+		store-uri="imaps://binaymishra136:Pa$$w0rd47@imap.gmail.com:993/inbox"
 		channel="inputMail" should-delete-messages="true"
 		should-mark-messages-as-read="true" java-mail-properties="javaMailProperties" />
 		
