@@ -11,11 +11,11 @@ import org.springframework.integration.core.MessageHandler;
 public class Application {
 
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("imap-idle-mail.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("imap-idle-config.xml");
 		DirectChannel inputChannel = context.getBean("inputChannel", DirectChannel.class);
 		inputChannel.subscribe(new MessageHandler() {
 			public void handleMessage(Message<?> message) throws MessagingException {
-				System.out.println("Message: " + message);
+				System.out.println("Message: " + message.getPayload());
 			}
 		});
 

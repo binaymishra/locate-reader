@@ -4,13 +4,13 @@
 	xmlns:mail="http://www.springframework.org/schema/integration/mail"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/integration
-http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
-http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-http://www.springframework.org/schema/integration/mail
-http://www.springframework.org/schema/integration/mail/spring-integration-mail-2.0.xsd
-http://www.springframework.org/schema/util
-http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/integration/mail
+	http://www.springframework.org/schema/integration/mail/spring-integration-mail-2.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
 	<int:channel id="inputChannel" />
 	
@@ -19,10 +19,10 @@ http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 	<mail:mail-to-string-transformer
 		input-channel="inputMail" output-channel="inputChannel" />
 		
-	<mail:inbound-channel-adapter id="customAdapter"
+	<mail:inbound-channel-adapter id="myAdapter"
 		store-uri="imaps://binaymishra136:Pa$$w0rd47@imap.gmail.com:993/inbox"
-		channel="inputMail" should-delete-messages="false"
-		should-mark-messages-as-read="false" java-mail-properties="javaMailProperties">
+		channel="inputMail" should-delete-messages="true"
+		should-mark-messages-as-read="true" java-mail-properties="javaMailProperties">
 
 		<int:poller max-messages-per-poll="1" fixed-rate="5000" />
 	</mail:inbound-channel-adapter>
@@ -30,6 +30,6 @@ http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 		<prop key="mail.imap.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
 		<prop key="mail.imap.socketFactory.fallback">false</prop>
 		<prop key="mail.store.protocol">imaps</prop>
-		<prop key="mail.debug">false</prop>
+		<prop key="mail.debug">true</prop>
 	</util:properties>
 </beans>
